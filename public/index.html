@@ -1,4 +1,22 @@
-<script>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Cred Amigo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    img {
+      width: 250px;
+      height: 250px;
+    }
+  </style>
+</head>
+<body>
+  <script>
   async function gerarPix() {
     try {
       const response = await fetch('/api/pix');
@@ -16,3 +34,8 @@
 
 <img id="qrCode" alt="QR Code Pix" />
 <p id="copiaCola"></p>
+
+  <h1>Cred Amigo</h1>
+  <p>QR Code Pix em breve!</p>
+</body>
+</html>

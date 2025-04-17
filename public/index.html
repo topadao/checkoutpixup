@@ -1,28 +1,18 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cred Amigo</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      margin: 0;
-    }
-    .qr {
-      max-width: 300px;
-      margin: 20px;
-    }
-  </style>
-</head>
-<body>
-  <h1>Cred Amigo</h1>
-  <p>Aguardando geração de QR Code Pix...</p>
-</body>
-</html>
+<script>
+  async function gerarPix() {
+    try {
+      const response = await fetch('/api/pix');
+      const data = await response.json();
 
+      document.getElementById('qrCode').src = data.qrCode;
+      document.getElementById('copiaCola').textContent = data.copiaCola;
+    } catch (error) {
+      console.error('Erro ao gerar Pix:', error);
+    }
+  }
+
+  window.onload = gerarPix;
+</script>
+
+<img id="qrCode" alt="QR Code Pix" />
+<p id="copiaCola"></p>
